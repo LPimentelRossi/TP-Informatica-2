@@ -20,7 +20,7 @@ Cuenta con un sensor de temperatura, un sistema de refrigeración, un sistema de
 
 ### Máquina de estado de Control de temperatura
 
- ![./recursos/fsmtemperatura.png](https://github.com/DamRCorba/Informatica2_2_11_2022/blob/master/TrabajoPractico/recursos/fsmtemperatura.png)
+ ![.Recursos/Máquina de Estado.png)
 
  - __SET__: Bandera de fin de inicialización
  - __T__: temperatura leida
