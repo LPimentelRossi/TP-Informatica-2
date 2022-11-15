@@ -46,6 +46,11 @@ descongelamiento = 2,
 alarma = 3
 }estados_t;
 
+typedef enum {
+off = 0,
+on = 1
+}offon_t;
+
 typedef sruct {
 char temp; // temperatura medida
 char temp_min; // temperatura minima
@@ -121,4 +126,78 @@ temp_max 0
 t_inicio_descong 240
 # tiempo fin descongelamiento en min
 t_fin_descong 30
+```
+- Funciones de Estado
+
+```c
+estados_t (f_espera(temperatura_t, tiempo_t)) {
+	temperatura_t;
+	tiempo_t;
+	offon_t;
+
+	if(estados!=descongelamiento && tem<tem_max){
+		frio = off;
+		descong = off;
+		alarma = off;
+		estados = espera;
+	}
+	else{
+		estados = enfriamiento
+	}
+return estados;
+}
+
+
+estados_t (f_enfriamiento(temperatura_t, tiempo_t)) {
+	temperatura_t;
+	tiempo_t;
+	offon_t;
+
+	if(estados!=descongelamiento && tem>tem_min){
+		frio = on;
+		descong = off;
+		alarma = off;
+		estados = enfriamiento;
+	}
+	else{
+		estados = descongelamiento
+	}
+return estados;
+}
+
+
+estados_t (f_descongelamiento(temperatura_t, tiempo_t)) {
+	temperatura_t;
+	tiempo_t;
+	offon_t;
+
+	if(estados!=alarma && t_inicio_descong>t && t>t_fin_descong){
+		frio = off;
+		descong = on;
+		alarma = off;
+		estados = descongelamiento;
+	}
+	else{
+		estados = alarma
+	}
+return estados;
+}
+
+
+estados_t (f_alarma(temperatura_t, tiempo_t)) {
+	temperatura_t;
+	tiempo_t;
+	offon_t;
+
+	if(tem>tem_max){
+		frio = on;
+		descong = off;
+		alarma = on;
+		estados = alarma;
+	}
+	else{
+		estados = espera
+	}
+return estados;
+}
 ```
